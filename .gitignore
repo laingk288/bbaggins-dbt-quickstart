@@ -1,0 +1,13 @@
+# dbt build artifacts
+target/
+dbt_packages/
+logs/
+manifest.json
+run_results.json
+sources.json
+catalog.json
+
+# IDE stuff
+.DS_Store
+.vscode/
+.idea/
