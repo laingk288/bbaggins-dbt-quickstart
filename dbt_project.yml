@@ -36,8 +36,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  +database: RAW
-  +schema: DBT_KENDRA
 
   jaffle_shop:
     +materialized: table
