@@ -18,7 +18,7 @@ sources:
         columns:
           - name: id
             description: Primary key for customer data
-            data_tests:
+            tests:
               - unique
               - not_null
               
@@ -28,7 +28,7 @@ sources:
         columns:
           - name: id
             description: Primary key for orders data
-            data_tests:
+            tests:
               - unique
               - not_null
               
