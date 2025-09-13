@@ -1,16 +1,15 @@
 models:
-  - name: stg_stripe_payments
-    description: Staged payment data from the Stripe payments app
+  - name: stg_stripe_payments        # ← must match the .sql model name
+    description: Staged payment data from Stripe
     columns:
       - name: payment_id
         description: Primary key for payments
         tests:
           - unique
           - not_null
-  - name: total_amount
-    description: Payment method used (eg. credit card)
-    tests:
-      - assert_positive_value_for_total_amount # <-- your custom test
 
-  - name: status
-    description: "{{ doc('payment_status')}}"
+      - name: amount
+        description: Total amount of the payment (in cents)
+
+      - name: status
+        description: "{{ doc('payment_status') }}"

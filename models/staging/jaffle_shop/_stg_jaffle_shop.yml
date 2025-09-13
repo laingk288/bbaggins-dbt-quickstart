@@ -20,16 +20,17 @@ models:
         description: "{{ doc('order_status') }}"
         tests:
           - accepted_values:
-              values:
-                - completed
-                - shipped
-                - placed
-                - return_pending
-                - returned
-      - name: customer_id
-        description: Foreign key to stg_customers.customer_id.
-        tests:
-          - relationships:
-              field: customer_id
-              to: ref('stg_customers')
+              arguments:
+                values:
+                  - completed
+                  - shipped
+                  - returned
+                  - placed
+                  - return_pending
 
+      - name: customer_id
+        tests:
+           - relationships:
+              arguments: 
+                 field: customer_id
+                 to: ref('stg_customers')
