@@ -19,7 +19,7 @@ clean-targets:
 models:
   bbaggins_dbt_quickstart:
     +database: ANALYTICS
-    +schema: DBT_KLAING         # legacy/jaffle models land here
+    +schema: DBT_KLAING          # legacy/jaffle models
 
     staging:
       +materialized: view
@@ -29,15 +29,17 @@ models:
 
     # --- Mortgage Calculator ---
     mortgage:
-      +schema: DBT_KLAING_MTG   # mortgage models land here
+      +schema: DBT_KLAING_MTG    # mortgage models land here
       staging:
         +materialized: view
       marts:
         +materialized: view
 
+# Make seeds go to RAW.SEEDS (global + project-scoped for safety)
 seeds:
-  +database: RAW                 # global default (extra safety)
+  +database: RAW
   +schema: SEEDS
   bbaggins_dbt_quickstart:
-    +database: RAW               # project-specific (what dbt will use)
+    +database: RAW
     +schema: SEEDS
+
