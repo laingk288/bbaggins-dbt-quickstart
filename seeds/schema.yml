@@ -1,0 +1,7 @@
+version: 2
+
+seeds:
+  - name: boc_rates
+    config:
+      database: RAW
+      schema: SEEDS
