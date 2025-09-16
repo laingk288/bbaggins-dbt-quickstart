@@ -19,7 +19,7 @@ clean-targets:
 models:
   bbaggins_dbt_quickstart:
     +database: ANALYTICS
-    +schema: DBT_KLAING   # default schema for your older models
+    +schema: DBT_KLAING         # legacy/jaffle models land here
 
     staging:
       +materialized: view
@@ -27,16 +27,17 @@ models:
     marts:
       +materialized: table
 
-    # --- NEW Mortgage Calculator ---
+    # --- Mortgage Calculator ---
     mortgage:
-      +schema: DBT_KLAING_MTG   # new drawer for mortgage models
+      +schema: DBT_KLAING_MTG   # mortgage models land here
       staging:
         +materialized: view
       marts:
         +materialized: view
+
 seeds:
+  +database: RAW                 # global default (extra safety)
+  +schema: SEEDS
   bbaggins_dbt_quickstart:
-    +database: RAW
+    +database: RAW               # project-specific (what dbt will use)
     +schema: SEEDS
-
-
