@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: int_boc_rates_latest
+    description: Latest BoC rate per series from stg_boc_rates
+    tests:
+      - not_null:
+          column_name: series
+      - not_null:
+          column_name: value
+      - unique:
+          column_name: series
