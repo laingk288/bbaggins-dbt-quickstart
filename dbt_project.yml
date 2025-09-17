@@ -16,7 +16,7 @@ clean-targets: ["target", "dbt_packages"]
 
 models:
   bbaggins_dbt_quickstart:
-    +database: ANALYTICS
+    +database: RAW
     +schema: DBT_KLAING
 
     staging:
