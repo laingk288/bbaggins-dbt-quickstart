@@ -1,9 +1,13 @@
+# dbt_project.yml
+
 name: "bbaggins_dbt_quickstart"
 version: "1.0"
 config-version: 2
 
+# Which profile to use (set in dbt Cloud already)
 profile: "default"
 
+# Project paths
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
@@ -11,13 +15,19 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
+# Compiled output
 target-path: "target"
-clean-targets: ["target", "dbt_packages"]
+clean-targets:
+  - "target"
+  - "dbt_packages"
 
+# -----------------------------
+# Model configuration
+# -----------------------------
 models:
   bbaggins_dbt_quickstart:
     +database: RAW
-    +schema: DBT_KLAING
+    +schema: DBT_KLAING         # legacy / fundamentals models
 
     staging:
       +materialized: view
@@ -25,18 +35,21 @@ models:
     marts:
       +materialized: table
 
-    # --- Mortgage Calculator ---
+    # --- New Mortgage Calculator models ---
     mortgage:
-      +schema: DBT_KLAING_MTG
+      +schema: DBT_KLAING_MTG   # new drawer for mortgage models
       staging:
         +materialized: view
       marts:
         +materialized: view
 
-# Global defaults for seeds (safety net)
+# -----------------------------
+# Seed configuration
+# -----------------------------
 seeds:
   +database: RAW
-  +schema: SEEDS
+  +schema: SEEDS                # all seeds (like boc_rates) go here
+
   bbaggins_dbt_quickstart:
     +database: RAW
     +schema: SEEDS

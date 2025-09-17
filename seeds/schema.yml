@@ -5,3 +5,4 @@ seeds:
     config:
       database: RAW
       schema: SEEDS
+
