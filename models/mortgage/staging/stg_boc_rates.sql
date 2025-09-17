@@ -4,8 +4,12 @@
     materialized='view'
 ) }}
 
-select
-    date,
-    series,
-    value
-from {{ ref('boc_rates') }}
+with src as (
+  select
+      to_date(date)                as rate_date,
+      lower(series)                as series,
+      cast(value as float)         as value
+  from {{ ref('boc_rates') }}      -- <— use the seed via ref()
+)
+
+select * from src;
