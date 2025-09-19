@@ -15,3 +15,4 @@ with ranked as (
 select rate_date, series, value
 from ranked
 where rn = 1
+
