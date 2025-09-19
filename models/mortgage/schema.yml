@@ -1,0 +1,11 @@
+models:
+  - name: fct_boc_rates_latest
+    description: "Latest Bank of Canada rates fact table"
+    columns:
+      - name: series
+        tests:
+          - not_null
+          - unique
+      - name: rate_date
+        tests:
+          - not_null
