@@ -1,10 +1,14 @@
 models:
   - name: fct_boc_rates_latest
+    description: "latest bank of canada rate points by series"
     columns:
       - name: series
+        description: "rate series key (eg.g policy_rate, prime)"
         tests: [not_null, unique]
       - name: rate_date
+        description: "date of the rate observation"
         tests: [not_null]
       - name: value
+        description: "rate value as decimal"
         tests: [not_null]
 
