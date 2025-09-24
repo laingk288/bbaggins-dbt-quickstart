@@ -9,6 +9,6 @@ models:
         description: "date of the rate observation"
         tests: [not_null]
       - name: value
-        description: "rate value as decimal"
+        description: "numeric value of the rate at the given date"
         tests: [not_null]
 
