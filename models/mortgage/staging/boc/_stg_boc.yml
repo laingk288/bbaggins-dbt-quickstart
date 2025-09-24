@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: stg_boc__rates
+    description: "Cleaned Bank of Canada rate observations ready for marts."
+    columns:
+      - name: rates_sk
+        description: "Surrogate key of date, series, currency, tenor."
+        tests:
+         - unique
+         - not_null
+      - name: rate_date
+        tests: 
+         - not_null
+      - name: series_code
+        tests:
+          - not_null
+          - accepted_values:
+              values: 
+               - MORTGAGE_POSTED
+               - PRIME
+               - BOND_5Y
+               - BOND_10Y  # adjust to what you actually ingest
+      - name: rate_percent
+        description: "Rate as a percent (e.g., 4.95)."
+      - name: rate_fraction
+        description: "Rate as a fraction (e.g., 0.0495)."

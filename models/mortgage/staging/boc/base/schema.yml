@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: base_boc__rates
+    config:
+      tags: ['base','staging']
+    description: "Base cleaned view of raw BOC rates."
+

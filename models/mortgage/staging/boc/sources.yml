@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: boc
+    database: RAW              # adjust if different
+    schema: BOC                # adjust if different
+    tables:
+      - name: RATES_RAW        # the raw table from your ingest
+        loaded_at_field: ingested_at         # pick the real timestamp column
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
